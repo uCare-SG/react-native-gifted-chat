@@ -184,12 +184,15 @@ export default class MessageContainer extends React.Component {
       >
         <SectionList
           ref={component => this._invertibleScrollViewRef = component}
-          inverted
+
+          automaticallyAdjustContentInsets={false}
 	        initialNumToRender={20}
           maxToRenderPerBatch={20}
-          sections={this.state.messagesData}
-
           {...this.props.listViewProps}
+          {...this.props.invertibleScrollViewProps}
+          inverted
+
+          sections={this.state.messagesData}
 
           renderItem={this.renderRow}
           renderSectionFooter={this.renderSectionHeader}
