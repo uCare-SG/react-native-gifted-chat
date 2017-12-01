@@ -24,6 +24,8 @@ import InputToolbar from './InputToolbar';
 import LoadEarlier from './LoadEarlier';
 import Message from './Message';
 import MessageContainer from './MessageContainer';
+import SectionedMessageContainer from './SectionedMessageContainer';
+import SectionHeader from './SectionHeader';
 import Send from './Send';
 import Time from './Time';
 import GiftedAvatar from './GiftedAvatar';
@@ -303,11 +305,12 @@ class GiftedChat extends React.Component {
 
   renderMessages() {
     const AnimatedView = this.props.isAnimated === true ? Animated.View : View;
+    const _MessageContainer = this.props.isUseSection === true ? SectionedMessageContainer : MessageContainer;
     return (
       <AnimatedView style={{
         height: this.state.messagesContainerHeight,
       }}>
-        <MessageContainer
+        <_MessageContainer
           {...this.props}
 
           invertibleScrollViewProps={this.invertibleScrollViewProps}
@@ -534,6 +537,7 @@ GiftedChat.defaultProps = {
   renderMessage: null,
   renderMessageText: null,
   renderMessageImage: null,
+  renderSectionHeader: null,
   imageProps: {},
   lightboxProps: {},
   renderCustomView: null,
@@ -585,6 +589,7 @@ GiftedChat.propTypes = {
   renderMessage: PropTypes.func,
   renderMessageText: PropTypes.func,
   renderMessageImage: PropTypes.func,
+  renderSectionHeader: PropTypes.func,
   imageProps: PropTypes.object,
   lightboxProps: PropTypes.object,
   renderCustomView: PropTypes.func,
@@ -621,6 +626,8 @@ export {
   LoadEarlier,
   Message,
   MessageContainer,
+  SectionedMessageContainer,
+  SectionHeader,
   Send,
   Time,
   GiftedAvatar,

@@ -202,9 +202,11 @@ export default class Example extends React.Component {
   }
 
   render() {
+    const isUseSection = true
     return (
       <GiftedChat
-        messages={this.state.messages}
+        messages={(isUseSection) ? [{ data: this.state.messages, title: 'Section Header' }] : this.state.messages}
+        isUseSection={isUseSection}
         onSend={this.onSend}
         loadEarlier={this.state.loadEarlier}
         onLoadEarlier={this.onLoadEarlier}

@@ -15,6 +15,10 @@ import {isSameUser, isSameDay} from './utils';
 
 export default class Message extends React.Component {
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.hash !== nextProps.hash
+  }
+
   getInnerComponentProps() {
     const {containerStyle, ...props} = this.props;
     return {
@@ -67,7 +71,7 @@ export default class Message extends React.Component {
     return (
       <View>
         {this.renderDay()}
-        {this.props.currentMessage.system ? 
+        {this.props.currentMessage.system ?
           this.renderSystemMessage() :
           <View style={[styles[this.props.position].container, { marginBottom: isSameUser(this.props.currentMessage, this.props.nextMessage) ? 2 : 10 }, this.props.containerStyle[this.props.position]]}>
             {this.props.position === "left" ? this.renderAvatar() : null}
