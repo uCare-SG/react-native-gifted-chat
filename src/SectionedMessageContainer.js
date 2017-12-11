@@ -163,7 +163,7 @@ export default class MessageContainer extends React.Component {
 
   renderSectionHeader({section}) {
     if (this.props.renderSectionHeader) {
-      return this.props.renderSectionHeader(messageProps);
+      return this.props.renderSectionHeader(section);
     }
     return <SectionHeader section={section} />
   }
