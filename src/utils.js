@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { Dimensions, Platform } from 'react-native';
 
 const DEPRECATION_MESSAGE = 'isSameUser and isSameDay should be imported from the utils module instead of using the props functions';
 
@@ -32,4 +33,15 @@ export function warnDeprecated(fn) {
     return fn(...args);
   };
 
+}
+
+export const isIphoneX = () => {
+  let d = Dimensions.get('window');
+  const { height, width } = d;
+
+  return (
+  Platform.OS === 'ios' &&
+  // Accounting for the height in either orientation
+  (height === 812 || width === 812)
+  );
 }
